@@ -1,0 +1,14 @@
+.container{
+  padding-left:600px;
+  padding-top: 20px;
+  background-color: cyan;
+}
+.form-control
+{
+
+}
+
+.invalid-feedback{
+  font-style: italic;
+  color: brown;
+}

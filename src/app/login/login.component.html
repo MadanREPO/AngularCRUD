@@ -1,0 +1,26 @@
+<h2 style="padding-left: 700px; color:blue;background-color: cornsilk;">Login</h2>
+<div class="container">
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label for="username" style="padding-right: 20px;">Username</label>
+        <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+        <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+            <div *ngIf="f.username.errors.required">Username is required</div>
+        </div>
+    </div>
+    <br>
+    <div class="form-group">
+        <label for="password" style=" padding-right: 20px;">Password</label>
+        <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+            <div *ngIf="f.password.errors.required">Password is required</div>
+        </div>
+    </div>
+  <br>
+    <div>
+      <button class="btn btn-info my-4 btn-block" style=" padding-right: 20px;" type="submit">submit</button>
+    </div>
+</form>
+</div>
+
+

@@ -1,0 +1,87 @@
+<app-header-navbar></app-header-navbar>
+<h2>Employee Details</h2>
+<div class="container" *ngIf="isdisplay">
+<div>
+  <button (click)=AddEmployeeRecords()>Add</button>
+</div>
+
+<div>
+<table>
+  <tr>
+
+
+    <th>Emp Id</th>
+    <th>Emp Name</th>
+    <th> D.O.B</th>
+    <th>Department</th>
+    <th>Delete</th>
+    <th>Edit</th>
+  </tr>
+
+    <tr *ngFor="let emp of employeeData">
+      <td>{{emp.emp_id}}</td>
+      <td>{{emp.emp_name}}</td>
+      <td>{{emp.emp_desg}}</td>
+      <td> {{emp.emp_id}}</td>
+
+      <!-- <td><a>delete</a></td> -->
+      <td><button style="display:block;" (click)=deleteRecord(emp)>delete</button></td>
+      <!-- <td><a>edit</a></td> -->
+      <td><button  style="display:block;" (click)=editRecord(emp)>edit</button></td>
+    </tr>
+
+
+</table>
+</div>
+</div>
+
+<div class="container" *ngIf="isadd || isEdit">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="text-center border border-light p-5">
+
+
+
+    <!-- <div class="form-row mb-4">
+        <div class="col">
+            <input type="text" formControlName="empId:" id="defaultRegisterFormFirstName" class="form-control" placeholder="First name">
+</div>
+<div class="col">
+    <input type="text" formControlName="empName" id="defaultRegisterFormLastName" class="form-control" placeholder="Last name">
+</div>
+</div>
+
+<input type="email" formControlName="empDesg" id="defaultRegisterFormEmail" class="form-control mb-4" placeholder="E-mail">
+
+<button class="btn btn-info my-4 btn-block" type="submit">submit</button>
+
+<hr> -->
+
+<div class="form-group" >
+  <label for="empId" style=" padding-right: 20px;">empId</label>
+  <input type="text" formControlName="empId" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.empId.errors }" />
+  <div *ngIf="submitted && f.empId.errors" class="invalid-feedback">
+      <div *ngIf="f.empId.errors.required">empId is required</div>
+  </div>
+</div>
+<br>
+<div class="form-group">
+  <label for="empName" style=" padding-right: 20px;">empName</label>
+  <input type="text" formControlName="empName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.empName.errors }" />
+  <div *ngIf="submitted && f.empName.errors" class="invalid-feedback">
+      <div *ngIf="f.empName.errors.required">empName is required</div>
+  </div>
+</div>
+<br>
+<div class="form-group">
+  <label for="Designation" style=" padding-right: 20px;">Designation</label>
+  <input type="Designation" formControlName="empDesg" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.empDesg.errors }" />
+  <div *ngIf="submitted && f.empDesg.errors" class="invalid-feedback">
+      <div *ngIf="f.empDesg.errors.required">Designation is required</div>
+  </div>
+</div>
+<br>
+<div>
+  <button class="btn btn-info my-4 btn-block" type="submit" style=" padding-right: 20px;">submit</button>
+</div>
+
+</form>
+</div>
